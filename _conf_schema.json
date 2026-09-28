@@ -402,6 +402,18 @@
                         "type": "bool",
                         "default": true
                     },
+                    "use_original_image": {
+                        "description": "原图模式",
+                        "hint": "开启后去掉CDN的imageMogr2压缩参数，获取平台留存的原图（长边约1280）；关闭则发送压缩缩略图，省流量但大图会糊。",
+                        "type": "bool",
+                        "default": true
+                    },
+                    "mixed_layout": {
+                        "description": "图文混排",
+                        "hint": "开启后按原文顺序交错发送文字与图片；关闭则恢复旧排版：先发完全部图片，再统一发文字。",
+                        "type": "bool",
+                        "default": true
+                    },
                     "video_send_mode": {
                         "description": "视频发送模式",
                         "hint": "仅影响小黑盒视频：不发送视频、只发送第一个视频、发送全部视频。",
