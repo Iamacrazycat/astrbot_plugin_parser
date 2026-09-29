@@ -944,10 +944,10 @@ class XiaoheiheParser(BaseParser):
         [("text", "文字一"), ("image", ...), ("text", "文字二")]。
         """
         segments: list[tuple[str, str]] = []
-        for part in re.split(r"(<img[^>]*>)", html_block, flags=re.I):
+        for part in re.split(r"(<img\b[^>]*>)", html_block, flags=re.I):
             if not part:
                 continue
-            if re.fullmatch(r"<img[^>]*>", part, flags=re.I):
+            if re.fullmatch(r"<img\b[^>]*>", part, flags=re.I):
                 matched = re.search(
                     r"data-original=\"([^\"]+)\"|src=\"([^\"]+)\"", part, re.I
                 )
@@ -991,7 +991,7 @@ class XiaoheiheParser(BaseParser):
         fragment = html.unescape(html_block)
         fragment = re.sub(r"<br\s*/?>", "\n", fragment, flags=re.I)
         fragment = re.sub(r"</p>\s*<p[^>]*>", "\n", fragment, flags=re.I)
-        fragment = re.sub(r"<img[^>]*>", "", fragment, flags=re.I)
+        fragment = re.sub(r"<img\b[^>]*>", "", fragment, flags=re.I)
         fragment = re.sub(r"<[^>]+>", "", fragment)
         lines = [self._clean_text(line) for line in fragment.splitlines()]
         lines = [line for line in lines if line]
