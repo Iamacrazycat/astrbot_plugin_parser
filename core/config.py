@@ -156,6 +156,8 @@ class ParserItem(ConfigNode):
     use_proxy: bool
     cookies: str | None
     show_body_text: bool | None
+    use_original_image: bool | None
+    mixed_layout: bool | None
     show_work_content: bool | None
     text_max_length: int | None
     video_send_mode: str | None
